@@ -23,7 +23,7 @@ class Epicurious(AbstractScraper):
         ]
 
     def instructions(self):
-        instructions_html = self.soup.find_all('li', {'class': 'preparation-group'})[0].find_all('li', {'class': 'preparation-step'})
+        instructions_html = [g.find_all('li', {'class': 'preparation-step'}) for g in self.soup.find_all('li', {'class': 'preparation-group'})]
 
         return '\n'.join([
             normalize_string(instruction.get_text())
