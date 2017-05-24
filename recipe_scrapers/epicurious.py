@@ -12,7 +12,7 @@ class Epicurious(AbstractScraper):
         return self.soup.find('h1', {'itemprop': 'name'}).get_text()
 
     def total_time(self):
-        return get_minutes(self.soup.findAll('p', {'class': 'summary_data'})[-1])
+        return get_minutes(self.soup.find('dd', {'class': 'total-time'}))
 
     def ingredients(self):
         ingredients_html = self.soup.findAll('li', {'itemprop': "ingredients"})
