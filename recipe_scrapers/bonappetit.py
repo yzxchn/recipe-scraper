@@ -15,7 +15,7 @@ class BonAppetit(AbstractScraper):
         return get_minutes(self.soup.find('span', {'itemprop': 'totalTime'}))
 
     def ingredients(self):
-        ingredients_html = self.soup.findAll('span', {'itemprop': "ingredients"})
+        ingredients_html = self.soup.findAll('li', {'itemprop': "ingredients"})
 
         return [
             normalize_string(ingredient.get_text())
