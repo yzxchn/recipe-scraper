@@ -23,7 +23,7 @@ class BonAppetit(AbstractScraper):
         ]
 
     def instructions(self):
-        instructions_html = self.soup.find('div', {'class': 'prep-steps'}).findAll('li')
+        instructions_html = self.soup.find('div', {'class': 'preparation__group'}).findAll('p')
 
         return '\n'.join([
             normalize_string(instruction.get_text())
